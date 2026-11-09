@@ -1,0 +1,1 @@
+点光源资源取自 https://www.cs.cmu.edu/~kmcrane/Projects/ModelRepository/，依据 CC0 1.0 Universal（CC0 1.0）公有领域贡献许可协议发布。

@@ -1,0 +1,31 @@
+load("@rules_cc//cc:cc_library.bzl", "cc_library")
+load("//:build_defs.bzl", "MJ_ROOT")
+
+package(default_visibility = ["//:__subpackages__"])
+
+cc_library(
+    name = "obj_decoder",
+    srcs = ["obj_decoder.cc"],
+    conlyopts = ["-std=c11"],
+    copts = [
+        "-I" + MJ_ROOT + "/src",
+        "-fvisibility=hidden",
+    ],
+    cxxopts = [
+        "-fvisibility-inlines-hidden",
+        "-std=c++20",
+    ],
+    linkstatic = True,
+    local_defines = [
+        "MUJOCO_DLL_EXPORTS",
+        "TINYOBJLOADER_IMPLEMENTATION",
+        "_GNU_SOURCE",
+    ],
+    deps = [
+        "//:libmujoco_hdrs",
+        "//src/engine",  # buildcleaner: keep
+        "//src/user:user_model",  # buildcleaner: keep
+        "@tinyobjloader",
+    ],
+    alwayslink = 1,
+)

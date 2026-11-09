@@ -1,0 +1,26 @@
+load("//:build_defs.bzl", "MJ_ROOT", "mj_models_filegroup")
+
+licenses(["notice"])
+
+filegroup(
+    name = "model",
+    srcs = [
+        "catenary.xml",
+        "delay.xml",
+        "flex.xml",
+        "flex_ipc.xml",
+        "frustum.xml",
+        "hammock.xml",
+        "model.mjz",
+        "model.xml",
+        "tendon_wrap.xml",
+    ],
+    visibility = ["//:visibility"],
+)
+
+mj_models_filegroup(
+    name = "test_mjcf",
+    extra_srcs = [
+        ":model",
+    ],
+)
